@@ -7,4 +7,4 @@ xb = xbee.ZigBee(ser)
 
 while True:
 	frame = xb.wait_read_frame()
-	print frame
+	print str(frame)
