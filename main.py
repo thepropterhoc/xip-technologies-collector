@@ -10,9 +10,9 @@ baseURL = "http://www.projectxip.com/api/lot/"
 while True:
 	frame = ser.readline().strip().split(' ')
 	if frame[0] == "INCR":
-		print requests.post(baseURL + "increment/"+ frame[1], data={}, headers="application/json")
+		print requests.post(baseURL + "increment/"+ frame[1], data={}, header="application/json")
 		#print "Increment of lot: " + frame[1]
 	elif frame[1] == "DECR":
-		print requests.post(baseURL + "decrement/" + frame[1], data={}, headers="application/json")
+		print requests.post(baseURL + "decrement/" + frame[1], data={}, header="application/json")
 		#print "Decrement of lot: "  + frame[1]
 	
