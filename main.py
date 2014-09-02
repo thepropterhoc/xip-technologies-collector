@@ -6,5 +6,9 @@ ser.open()
 xb = xbee.ZigBee(ser)
 
 while True:
-	frame = ser.readline()
-	print str(frame)
+	frame = ser.readline().strip().split(' ')
+	if frame[0] == "INCR":
+		print "Increment of lot: " + frame[1]
+	elif frame[1] == "DECR":
+		print "Decrement of lot: " + frame[1]
+	
