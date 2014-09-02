@@ -6,5 +6,5 @@ ser.open()
 xb = xbee.ZigBee(ser)
 
 while True:
-	frame = xb.wait_read_frame()
+	frame = ser.readline()
 	print str(frame)
