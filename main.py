@@ -14,12 +14,16 @@ class reader(threading.Thread):
 	def run(self):
 		while True:
 			frame = frames.get()
-			if frame[0] == "INCR":
-				print requests.post(baseURL + "increment/"+ frame[1])
-				print "Increment of lot: " + frame[1]
-			elif frame[0] == "DECR":
-				print requests.post(baseURL + "decrement/" + frame[1])
-				print "Decrement of lot: "  + frame[1]
+			try: 
+				if frame[0] == "INCR":
+					print requests.post(baseURL + "increment/"+ frame[1])
+					print "Increment of lot: " + frame[1]
+				elif frame[0] == "DECR":
+					print requests.post(baseURL + "decrement/" + frame[1])
+					print "Decrement of lot: "  + frame[1]
+			except:
+				print "Something went terribly wrong.  Putting frame back in the queue"
+				frames.put(frame)
 		
 read = reader()
 read.start()
